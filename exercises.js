@@ -119,3 +119,51 @@ function ophidianBank(custArr) {
 // const customers = ['Bob', 'Steve', 'Sharon', 'Wendy', 'Ken', 'Sara', 'Gwen'];
 // //const customers = ['Bob', 'Sue'];
 // ophidianBank(customers);
+
+
+// SORT STACK
+
+function sortStack(inStk) {
+
+  const tempStk = new Stack;
+  let itemHold;
+  console.log('inStk - start');
+  showStack(inStk);
+  console.log('--------');
+  while(inStk.top !== null){
+    if(!itemHold) itemHold = inStk.pop();
+
+    if(!tempStk.top || tempStk.top.data <= itemHold) {
+      tempStk.push(itemHold);
+      itemHold = null;
+    }
+    else {
+      inStk.push(tempStk.pop());
+    }
+  }
+
+  for(let node = tempStk.top; node; node = node.next) {
+    inStk.push(tempStk.pop());
+  }
+
+  console.log('inStk - end');
+  showStack(inStk);
+
+}
+
+function showStack(inStk){
+  for(let node = inStk.top; node; node = node.next){
+    console.log(node.data);
+  }
+}
+
+
+// const priStk = new Stack;
+// const numsToSort = [4, 7, 8, 1, 9, 5];
+// numsToSort.forEach( n => {
+//   priStk.push(n);
+// });
+// sortStack(priStk);
+
+
+
