@@ -1,3 +1,5 @@
+'use strict';
+
 function createNode(data=null, next=null, prev=null) {
     return {
         data,

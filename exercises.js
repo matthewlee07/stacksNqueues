@@ -86,5 +86,36 @@ function matchDancers(dancers){
     return danceQueue;
 }
 
-let dancers = ['F Jane', 'M Frank', 'M John', 'M Sherlock', 'F Modanna', 'M David', 'M Christopher', 'F Beyonce']
-console.log(matchDancers(dancers));
+// let dancers = ['F Jane', 'M Frank', 'M John', 'M Sherlock', 'F Modanna', 'M David', 'M Christopher', 'F Beyonce']
+// console.log(matchDancers(dancers));
+
+
+// OPHIDIAN BANK
+
+function ophidianBank(custArr) {
+
+  const bankQ = new Queue;
+  let currCust;
+
+  custArr.forEach( (cust) => {
+    bankQ.enqueue(cust);
+  });
+
+  while(bankQ.first) {
+    currCust = bankQ.dequeue();
+    if((Math.random()*100) < 25) {
+      console.log(`${currCust}'s paperwork wasn't in order - back of the line.`);     
+      bankQ.enqueue(currCust);
+    }
+    else{
+      console.log(`${currCust} was served - have a nice day!`);
+    }    
+  }
+
+  console.log('Ophidian bank is closed.');
+
+}
+
+// const customers = ['Bob', 'Steve', 'Sharon', 'Wendy', 'Ken', 'Sara', 'Gwen'];
+// //const customers = ['Bob', 'Sue'];
+// ophidianBank(customers);
