@@ -60,4 +60,31 @@ function matchParens(inStr) {
 }
 
 const strExpression = 'abd(efgh { klm [  dg } a)';
-console.log(matchParens(strExpression));
+// console.log(matchParens(strExpression));
+
+//Square dance
+
+function matchDancers(dancers){
+    const danceQueue = new Queue;
+    //iterate through dancers
+    for (let i = 0; i < dancers.length; i++){
+        //if danceQueue is empty add dancer
+        if (danceQueue.first === null){
+            danceQueue.enqueue(dancers[i])
+            
+        }
+        
+        else {
+            if (danceQueue.first.data[0] === dancers[i][0]){
+                danceQueue.enqueue(dancers[i])
+            } else {
+                danceQueue.dequeue()
+            }
+        }
+        // console.log("new danceQueue",danceQueue);
+    }
+    return danceQueue;
+}
+
+let dancers = ['F Jane', 'M Frank', 'M John', 'M Sherlock', 'F Modanna', 'M David', 'M Christopher', 'F Beyonce']
+console.log(matchDancers(dancers));
