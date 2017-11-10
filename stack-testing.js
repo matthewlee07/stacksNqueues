@@ -1,6 +1,6 @@
 'use strict';
 
-const {Stack, createNode} = require('./stack');
+const {Stack} = require('./stack');
 
 const myStack = new Stack;
 myStack.push("data1");
