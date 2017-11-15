@@ -111,29 +111,52 @@ function ophidianBank(custArr) {
   console.log('Ophidian bank is closed.');
 }
 
-const customers = ['Bob', 'Steve', 'Sharon', 'Wendy', 'Ken', 'Sara', 'Gwen'];
-ophidianBank(customers);
+// const customers = ['Bob', 'Steve', 'Sharon', 'Wendy', 'Ken', 'Sara', 'Gwen'];
+// ophidianBank(customers);
 
-function sortSack(input) {
-  let result = new Stack;
-  //iterate through input
-  for (let i = 0; i < input.length; i++) {
-    let tempStack = new Stack;
-    if (result.top===null) result.push(input[i])
-    
+// SORT STACK
+
+function sortStack(inStk) {
+
+  const tempStk = new Stack;
+  let itemHold;
+  console.log('inStk - start');
+  showStack(inStk);
+  console.log('--------');
+  while(inStk.top !== null){
+    if(!itemHold) itemHold = inStk.pop();
+
+    if(!tempStk.top || tempStk.top.data <= itemHold) {
+      tempStk.push(itemHold);
+      itemHold = null;
+    }
+    else {
+      inStk.push(tempStk.pop());
+    }
   }
 
-  return result;
+  for(let node = tempStk.top; node; node = node.next) {
+    inStk.push(tempStk.pop());
+  }
 
-  //   let tempStack = result;
-  //   if (result.top < stack[i]) {
-  //     tempStack.push(stack[i])
-  //     result = tempStack.push(result);;
-  //   } else {
-  //     result.push(stack(i));
-  //   }
-  // }
+  console.log('inStk - end');
+  showStack(inStk);
+
 }
 
-let stack = [10, 20];
-sortSack(stack);
+function showStack(inStk){
+  for(let node = inStk.top; node; node = node.next){
+    console.log(node.data);
+  }
+}
+
+
+// const priStk = new Stack;
+// const numsToSort = [4, 7, 8, 1, 9, 5];
+// numsToSort.forEach( n => {
+//   priStk.push(n);
+// });
+// sortStack(priStk);
+
+
+
